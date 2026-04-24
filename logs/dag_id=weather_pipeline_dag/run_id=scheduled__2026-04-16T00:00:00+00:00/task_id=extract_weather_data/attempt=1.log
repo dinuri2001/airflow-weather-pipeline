@@ -1,0 +1,109 @@
+[2026-04-17T00:17:49.692+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-04-17T00:17:49.935+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_pipeline_dag.extract_weather_data scheduled__2026-04-16T00:00:00+00:00 [queued]>
+[2026-04-17T00:17:49.954+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_pipeline_dag.extract_weather_data scheduled__2026-04-16T00:00:00+00:00 [queued]>
+[2026-04-17T00:17:49.954+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2026-04-17T00:17:49.981+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): extract_weather_data> on 2026-04-16 00:00:00+00:00
+[2026-04-17T00:17:50.018+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:62 DeprecationWarning: This process (pid=22670) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-04-17T00:17:50.004+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'weather_pipeline_dag', 'extract_weather_data', 'scheduled__2026-04-16T00:00:00+00:00', '--job-id', '14', '--raw', '--subdir', 'DAGS_FOLDER/weather_pipeline_dag.py', '--cfg-path', '/tmp/tmpt8bh2_0g']
+[2026-04-17T00:17:50.020+0000] {standard_task_runner.py:91} INFO - Job 14: Subtask extract_weather_data
+[2026-04-17T00:17:50.020+0000] {standard_task_runner.py:64} INFO - Started process 22671 to run task
+[2026-04-17T00:17:50.175+0000] {task_command.py:426} INFO - Running <TaskInstance: weather_pipeline_dag.extract_weather_data scheduled__2026-04-16T00:00:00+00:00 [running]> on host 19fedcd13a70
+[2026-04-17T00:17:50.447+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Dinuri' AIRFLOW_CTX_DAG_ID='weather_pipeline_dag' AIRFLOW_CTX_TASK_ID='extract_weather_data' AIRFLOW_CTX_EXECUTION_DATE='2026-04-16T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-04-16T00:00:00+00:00'
+[2026-04-17T00:17:50.451+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-04-17T00:17:50.543+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-04-17T00:17:50.546+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python /opt/***/scripts/extract_weather.py']
+[2026-04-17T00:17:50.572+0000] {subprocess.py:86} INFO - Output:
+[2026-04-17T00:43:56.341+0000] {subprocess.py:93} INFO - Error occurred: HTTPSConnectionPool(host='api.open-meteo.com', port=443): Read timed out. (read timeout=30)
+[2026-04-17T00:43:56.353+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2026-04-17T00:43:56.353+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 537, in _make_request
+[2026-04-17T00:43:56.354+0000] {subprocess.py:93} INFO -     response = conn.getresponse()
+[2026-04-17T00:43:56.354+0000] {subprocess.py:93} INFO -                ^^^^^^^^^^^^^^^^^^
+[2026-04-17T00:43:56.355+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connection.py", line 461, in getresponse
+[2026-04-17T00:43:56.355+0000] {subprocess.py:93} INFO -     httplib_response = super().getresponse()
+[2026-04-17T00:43:56.355+0000] {subprocess.py:93} INFO -                        ^^^^^^^^^^^^^^^^^^^^^
+[2026-04-17T00:43:56.355+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.12/http/client.py", line 1428, in getresponse
+[2026-04-17T00:43:56.356+0000] {subprocess.py:93} INFO -     response.begin()
+[2026-04-17T00:43:56.356+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.12/http/client.py", line 331, in begin
+[2026-04-17T00:43:56.356+0000] {subprocess.py:93} INFO -     version, status, reason = self._read_status()
+[2026-04-17T00:43:56.356+0000] {subprocess.py:93} INFO -                               ^^^^^^^^^^^^^^^^^^^
+[2026-04-17T00:43:56.356+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.12/http/client.py", line 292, in _read_status
+[2026-04-17T00:43:56.357+0000] {subprocess.py:93} INFO -     line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+[2026-04-17T00:43:56.357+0000] {subprocess.py:93} INFO -                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-17T00:43:56.357+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.12/socket.py", line 708, in readinto
+[2026-04-17T00:43:56.358+0000] {subprocess.py:93} INFO -     return self._sock.recv_into(b)
+[2026-04-17T00:43:56.358+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-17T00:43:56.358+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.12/ssl.py", line 1252, in recv_into
+[2026-04-17T00:43:56.359+0000] {subprocess.py:93} INFO -     return self.read(nbytes, buffer)
+[2026-04-17T00:43:56.359+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-17T00:43:56.359+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.12/ssl.py", line 1104, in read
+[2026-04-17T00:43:56.359+0000] {subprocess.py:93} INFO -     return self._sslobj.read(len, buffer)
+[2026-04-17T00:43:56.360+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-17T00:43:56.360+0000] {subprocess.py:93} INFO - TimeoutError: The read operation timed out
+[2026-04-17T00:43:56.360+0000] {subprocess.py:93} INFO - 
+[2026-04-17T00:43:56.360+0000] {subprocess.py:93} INFO - The above exception was the direct cause of the following exception:
+[2026-04-17T00:43:56.361+0000] {subprocess.py:93} INFO - 
+[2026-04-17T00:43:56.361+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2026-04-17T00:43:56.361+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/requests/adapters.py", line 667, in send
+[2026-04-17T00:43:56.361+0000] {subprocess.py:93} INFO -     resp = conn.urlopen(
+[2026-04-17T00:43:56.362+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^
+[2026-04-17T00:43:56.362+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 845, in urlopen
+[2026-04-17T00:43:56.362+0000] {subprocess.py:93} INFO -     retries = retries.increment(
+[2026-04-17T00:43:56.363+0000] {subprocess.py:93} INFO -               ^^^^^^^^^^^^^^^^^^
+[2026-04-17T00:43:56.363+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/util/retry.py", line 470, in increment
+[2026-04-17T00:43:56.363+0000] {subprocess.py:93} INFO -     raise reraise(type(error), error, _stacktrace)
+[2026-04-17T00:43:56.364+0000] {subprocess.py:93} INFO -           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-17T00:43:56.364+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/util/util.py", line 39, in reraise
+[2026-04-17T00:43:56.364+0000] {subprocess.py:93} INFO -     raise value
+[2026-04-17T00:43:56.365+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 791, in urlopen
+[2026-04-17T00:43:56.365+0000] {subprocess.py:93} INFO -     response = self._make_request(
+[2026-04-17T00:43:56.365+0000] {subprocess.py:93} INFO -                ^^^^^^^^^^^^^^^^^^^
+[2026-04-17T00:43:56.366+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 539, in _make_request
+[2026-04-17T00:43:56.366+0000] {subprocess.py:93} INFO -     self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+[2026-04-17T00:43:56.366+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 371, in _raise_timeout
+[2026-04-17T00:43:56.366+0000] {subprocess.py:93} INFO -     raise ReadTimeoutError(
+[2026-04-17T00:43:56.367+0000] {subprocess.py:93} INFO - urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='api.open-meteo.com', port=443): Read timed out. (read timeout=30)
+[2026-04-17T00:43:56.367+0000] {subprocess.py:93} INFO - 
+[2026-04-17T00:43:56.367+0000] {subprocess.py:93} INFO - During handling of the above exception, another exception occurred:
+[2026-04-17T00:43:56.368+0000] {subprocess.py:93} INFO - 
+[2026-04-17T00:43:56.368+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2026-04-17T00:43:56.368+0000] {subprocess.py:93} INFO -   File "/opt/***/scripts/extract_weather.py", line 77, in <module>
+[2026-04-17T00:43:56.368+0000] {subprocess.py:93} INFO -     extract_and_store()
+[2026-04-17T00:43:56.368+0000] {subprocess.py:93} INFO -   File "/opt/***/scripts/extract_weather.py", line 36, in extract_and_store
+[2026-04-17T00:43:56.368+0000] {subprocess.py:93} INFO -     response = requests.get(url, timeout=30)
+[2026-04-17T00:43:56.368+0000] {subprocess.py:93} INFO -                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-17T00:43:56.368+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/requests/api.py", line 73, in get
+[2026-04-17T00:43:56.369+0000] {subprocess.py:93} INFO -     return request("get", url, params=params, **kwargs)
+[2026-04-17T00:43:56.369+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-17T00:43:56.369+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/requests/api.py", line 59, in request
+[2026-04-17T00:43:56.369+0000] {subprocess.py:93} INFO -     return session.request(method=method, url=url, **kwargs)
+[2026-04-17T00:43:56.369+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-17T00:43:56.369+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/requests/sessions.py", line 589, in request
+[2026-04-17T00:43:56.369+0000] {subprocess.py:93} INFO -     resp = self.send(prep, **send_kwargs)
+[2026-04-17T00:43:56.369+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-17T00:43:56.370+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/requests/sessions.py", line 703, in send
+[2026-04-17T00:43:56.370+0000] {subprocess.py:93} INFO -     r = adapter.send(request, **kwargs)
+[2026-04-17T00:43:56.370+0000] {subprocess.py:93} INFO -         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-17T00:43:56.370+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/requests/adapters.py", line 713, in send
+[2026-04-17T00:43:56.370+0000] {subprocess.py:93} INFO -     raise ReadTimeout(e, request=request)
+[2026-04-17T00:43:56.370+0000] {subprocess.py:93} INFO - requests.exceptions.ReadTimeout: HTTPSConnectionPool(host='api.open-meteo.com', port=443): Read timed out. (read timeout=30)
+[2026-04-17T00:43:56.402+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2026-04-17T00:43:56.406+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-04-17T00:43:56.447+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/bash.py", line 243, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2026-04-17T00:43:56.469+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=weather_pipeline_dag, task_id=extract_weather_data, run_id=scheduled__2026-04-16T00:00:00+00:00, execution_date=20260416T000000, start_date=20260417T001749, end_date=20260417T004356
+[2026-04-17T00:43:56.491+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 14 for task extract_weather_data (Bash command failed. The command returned a non-zero exit code 1.; 22671)
+[2026-04-17T00:43:56.539+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 1
+[2026-04-17T00:43:56.565+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-04-17T00:43:56.566+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
